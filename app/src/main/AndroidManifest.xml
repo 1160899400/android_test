@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <!--属性依次为：全限定类名,用于匹配的URI,是否共享数据 -->
+        <provider android:name="com.liu.db.NameContentProvider"
+            android:authorities="com.jay.example.providers.name_provider"
+            android:exported="true" />
     </application>
+
 
 </manifest>
