@@ -1,4 +1,4 @@
-package com.liu.androidtest;
+package com.liu.activity;
 
 import org.junit.Test;
 

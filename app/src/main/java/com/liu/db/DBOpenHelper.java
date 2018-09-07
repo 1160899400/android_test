@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * @author HZLI02
  * @date 2018/8/20
+ * 重写SQLiteOpenHelper，实现自定义的SQLite操作
  */
 
 public class DBOpenHelper extends SQLiteOpenHelper {
