@@ -11,7 +11,6 @@ import org.greenrobot.greendao.annotation.Transient;
  * @date 2018/8/21
  */
 
-
 @Entity
 public class Student {
 
@@ -21,17 +20,22 @@ public class Student {
     @NotNull
     private String age;
 
+    /**
+     * @Transient 类似于transient关键字
+     * 该变量不会被序列化，也意味着不会生成对应的数据库字段
+     */
     @Transient
     private String info;
+
+    
+
+    public Student() {
+    }
 
     @Generated(hash = 943511856)
     public Student(Long _id, @NotNull String age) {
         this._id = _id;
         this.age = age;
-    }
-
-    @Generated(hash = 1556870573)
-    public Student() {
     }
 
     public Long get_id() {
@@ -42,7 +46,6 @@ public class Student {
         this._id = _id;
     }
 
-
     public String getAge() {
         return this.age;
     }
@@ -50,4 +53,5 @@ public class Student {
     public void setAge(String age) {
         this.age = age;
     }
+
 }
