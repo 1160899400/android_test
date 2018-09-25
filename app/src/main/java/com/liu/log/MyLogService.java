@@ -117,6 +117,7 @@ public class MyLogService extends IntentService {
             e(TAG, "CollectorThread == >" + e.getMessage());
             recordLogServiceLog("CollectorThread == >" + e.getMessage());
         }
+        
     }
 
 

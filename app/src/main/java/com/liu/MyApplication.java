@@ -24,10 +24,12 @@ public class MyApplication extends Application {
     public void onCreate(){
         super.onCreate();
         Intent intent = new Intent(this,MyLogService.class);
-//        intent.setPackage("com.liu");
-//        intent.setAction("com.liu.log.MyLogService");
+
         startService(intent);
         Log.i(TAG,"has start service");
+
+        //        intent.setPackage("com.liu");
+//        intent.setAction("com.liu.log.MyLogService");
 
 //        GreenDaoHelper greenDaoManager = new GreenDaoHelper();
 //        greenDaoManager.initDatabase(getApplicationContext());
