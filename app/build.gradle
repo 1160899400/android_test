@@ -1,11 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
-//apply plugin: 'com.liu.aopdemo.PluginDemo'
+apply plugin: 'org.royole.channel-apk'
 
+channel {
+    //当不指定channelFile时，默认读取根工程目录下的channel.txt获取渠道信息
+    channelFile new File(project.getRootDir(), 'channel.txt')
+    baseOutputDir new File(project.getRootDir(), "apk")
+    mSignatureMode 2
+}
+
+//android 变量，每个gradle文件中有个内建变量叫project,android 也是个变量，project.android与android{ xxx }等价
+//android 变量有多个成员变量，这里设置的都是成员变量的属性
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.liu.activity"
+        applicationId "com.liu"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
@@ -14,10 +23,24 @@ android {
     }
 
 
+    signingConfigs {
+        release {
+
+        }
+        debug {
+
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true   //是否代码混淆
+            multiDexEnabled true //防止方法数量超过65536导致错误
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            multiDexEnabled true
         }
     }
 
@@ -37,6 +60,7 @@ android {
 
 
 }
+
 
 
 
