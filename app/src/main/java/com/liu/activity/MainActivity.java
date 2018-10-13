@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.liu.R;
+import com.liu.Student;
 import com.liu.dao.StudentDao;
-import com.liu.entity.Student;
 import com.liu.helper.GreenDaoHelper;
 
 import java.io.File;

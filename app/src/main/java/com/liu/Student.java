@@ -1,4 +1,4 @@
-package com.liu.entity;
+package com.liu;
 
 import android.provider.Settings;
 
