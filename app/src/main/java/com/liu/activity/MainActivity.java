@@ -12,6 +12,8 @@ import com.liu.Student;
 import com.liu.dao.StudentDao;
 import com.liu.helper.GreenDaoHelper;
 
+import org.greenrobot.greendao.async.AsyncSession;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -24,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bindView();
-//        addData();
-//        showData();
+        addData();
+        showData();
+
+        AsyncSession asyncSession = new AsyncSession()
 
 //        testDir();
 //        mkDirFile("log_test", "test");
