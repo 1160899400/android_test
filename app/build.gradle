@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
+//apply plugin: 'org.greenrobot.greendao'
 //apply plugin: 'org.royole.channel-apk'
 
 //channel {
@@ -32,6 +32,7 @@ android {
         }
     }
 
+
     buildTypes {
         release {
             minifyEnabled true   //是否代码混淆
@@ -45,18 +46,18 @@ android {
     }
 
     //配置数据库,配置版本号即可,其他的只需要保持默认
-    greendao {
-        //数据库版本号
-        schemaVersion 1
-        //数据库dao所在包
-        daoPackage 'com.liu.dao'
-        //生成的数据库文件的目录
-        targetGenDir 'src/main/java'
-        //自动生成单元测试
-//    generateTests true
-        //生成的单元测试目录
-//    targetGenDirTests
-    }
+//    greendao {
+//        //数据库版本号
+//        schemaVersion 1
+//        //输出的dao所在包
+//        daoPackage 'com.liu.dao'
+//        //生成的数据库文件的目录
+//        targetGenDir 'src/main/java'
+//        //自动生成单元测试
+//        generateTests true
+//        //生成的单元测试目录
+////    targetGenDirTests
+//    }
 
 
 }

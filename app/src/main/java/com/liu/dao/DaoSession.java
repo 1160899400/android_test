@@ -8,7 +8,7 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
-import com.liu.Student;
+import com.liu.entity.Student;
 
 import com.liu.dao.StudentDao;
 
