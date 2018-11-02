@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
-apply plugin: 'org.royole.channel-apk'
+apply plugin: 'org.royole.channel'
 
 channel {
     //当不指定channelFile时，默认读取根工程目录下的channel.txt获取渠道信息
-    channelFile new File(project.getRootDir(), 'channel.txt')
-    baseOutputDir new File(project.getRootDir(), "apk")
-    mSignatureMode 2
+//    channelFile new File(project.getRootDir(), 'channel.txt')
+//    mSignatureMode   2
+
+//    fastMode true
 }
 
 //android 变量，每个gradle文件中有个内建变量叫project,android 也是个变量，project.android与android{ xxx }等价
@@ -25,10 +26,12 @@ android {
 
     signingConfigs {
         release {
-
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
         debug {
-
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
 
@@ -52,10 +55,6 @@ android {
         daoPackage 'com.liu.dao'
         //生成的数据库文件的目录
         targetGenDir 'src/main/java'
-        //自动生成单元测试
-//    generateTests true
-        //生成的单元测试目录
-//    targetGenDirTests
     }
 
 

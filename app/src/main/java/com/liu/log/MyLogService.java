@@ -10,6 +10,9 @@ import android.os.Environment;
 import android.os.PowerManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.WindowManager;
+
+import com.liu.R;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -240,7 +243,7 @@ public class MyLogService extends IntentService {
         @Override
         public void run() {
             try {
-                //唤醒手机
+                //唤醒手机，防止service被系统干掉
                 wakeLock.acquire();
                 clearLogCache();
                 List<String> orgProcessList = getAllProcess();

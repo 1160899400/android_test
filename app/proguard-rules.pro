@@ -22,3 +22,8 @@
 
 
 -ignorewarnings
+
+# 打正式包时注释某一函数的调用
+#-assumenosideeffects class com.package.Utils {
+#public static *** method(...);
+#}

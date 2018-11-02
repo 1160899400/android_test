@@ -1,7 +1,9 @@
 package com.liu.activity;
 
+import android.app.Service;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
         bindView();
+
 //        addData();
 //        showData();
 
@@ -33,13 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void bindView(){
-        btn = findViewById(R.id.btn_1);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG,"Btn click");
-            }
-        });
+
     }
 
 
