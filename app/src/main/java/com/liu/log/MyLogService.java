@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author Hongzhi.Liu 2014302580200@whu.edu.cn
+ * @author Hongzhi.Liu
  * @date 2018/9/17
  */
 public class MyLogService extends IntentService {

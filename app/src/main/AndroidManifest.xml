@@ -4,9 +4,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.liu">
 
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!--<uses-permission android:name="android.permission.READ_LOGS" />-->
+=======
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+>>>>>>> 4497f44f8cc896592b7e633bfe073021fa346dd4
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
@@ -25,16 +31,24 @@
             </intent-filter>
         </activity>
 
+<<<<<<< HEAD
 
         <service android:name=".log.MyLogService" android:exported="false">
+=======
+        <service
+            android:name=".log.MyLogService"
+            android:exported="false"
+            android:process="com.liu.test">
+>>>>>>> 4497f44f8cc896592b7e633bfe073021fa346dd4
             <intent-filter>
-                <action android:name="com.liu.log.MyLogService"/>
+                <action android:name="com.liu.log.MyLogService" />
             </intent-filter>
         </service>
 
 
         <!--属性依次为：全限定类名,用于匹配的URI,是否共享数据 -->
-        <provider android:name=".db.NameContentProvider"
+        <provider
+            android:name=".db.NameContentProvider"
             android:authorities="com.jay.example.providers.name_provider"
             android:exported="true" />
     </application>

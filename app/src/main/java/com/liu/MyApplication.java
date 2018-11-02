@@ -31,8 +31,8 @@ public class MyApplication extends Application {
         //        intent.setPackage("com.liu");
 //        intent.setAction("com.liu.log.MyLogService");
 
-//        GreenDaoHelper greenDaoManager = new GreenDaoHelper();
-//        greenDaoManager.initDatabase(getApplicationContext());
+        GreenDaoHelper greenDaoManager = new GreenDaoHelper();
+        greenDaoManager.initDatabase(getApplicationContext());
 
     }
 

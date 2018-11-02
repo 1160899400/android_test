@@ -27,9 +27,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         bindView();
+<<<<<<< HEAD
 
 //        addData();
 //        showData();
+=======
+        addData();
+        showData();
+
+//        AsyncSession asyncSession = new AsyncSession();
+>>>>>>> 4497f44f8cc896592b7e633bfe073021fa346dd4
 
 //        testDir();
 //        mkDirFile("log_test", "test");
