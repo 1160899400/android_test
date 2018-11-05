@@ -24,9 +24,12 @@ public class StudentDao extends AbstractDao<Student, Long> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property _id = new Property(0, Long.class, "_id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Age = new Property(1, String.class, "age", false, "AGE");
+        public final static Property Info = new Property(2, String.class, "info", false, "INFO");
     }
+
+    private DaoSession daoSession;
 
 
     public StudentDao(DaoConfig config) {
@@ -35,14 +38,16 @@ public class StudentDao extends AbstractDao<Student, Long> {
     
     public StudentDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
+        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"STUDENT\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: _id
-                "\"AGE\" TEXT NOT NULL );"); // 1: age
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"AGE\" TEXT NOT NULL ," + // 1: age
+                "\"INFO\" TEXT);"); // 2: info
     }
 
     /** Drops the underlying database table. */
@@ -55,22 +60,38 @@ public class StudentDao extends AbstractDao<Student, Long> {
     protected final void bindValues(DatabaseStatement stmt, Student entity) {
         stmt.clearBindings();
  
-        Long _id = entity.get_id();
-        if (_id != null) {
-            stmt.bindLong(1, _id);
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
         }
         stmt.bindString(2, entity.getAge());
+ 
+        String info = entity.getInfo();
+        if (info != null) {
+            stmt.bindString(3, info);
+        }
     }
 
     @Override
     protected final void bindValues(SQLiteStatement stmt, Student entity) {
         stmt.clearBindings();
  
-        Long _id = entity.get_id();
-        if (_id != null) {
-            stmt.bindLong(1, _id);
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
         }
         stmt.bindString(2, entity.getAge());
+ 
+        String info = entity.getInfo();
+        if (info != null) {
+            stmt.bindString(3, info);
+        }
+    }
+
+    @Override
+    protected final void attachEntity(Student entity) {
+        super.attachEntity(entity);
+        entity.__setDaoSession(daoSession);
     }
 
     @Override
@@ -81,28 +102,30 @@ public class StudentDao extends AbstractDao<Student, Long> {
     @Override
     public Student readEntity(Cursor cursor, int offset) {
         Student entity = new Student( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // _id
-            cursor.getString(offset + 1) // age
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.getString(offset + 1), // age
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // info
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, Student entity, int offset) {
-        entity.set_id(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setAge(cursor.getString(offset + 1));
+        entity.setInfo(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
     
     @Override
     protected final Long updateKeyAfterInsert(Student entity, long rowId) {
-        entity.set_id(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
     @Override
     public Long getKey(Student entity) {
         if(entity != null) {
-            return entity.get_id();
+            return entity.getId();
         } else {
             return null;
         }
@@ -110,7 +133,7 @@ public class StudentDao extends AbstractDao<Student, Long> {
 
     @Override
     public boolean hasKey(Student entity) {
-        return entity.get_id() != null;
+        return entity.getId() != null;
     }
 
     @Override

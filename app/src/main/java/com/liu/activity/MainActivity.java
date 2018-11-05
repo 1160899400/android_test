@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addData() {
         StudentDao mStudentDao = GreenDaoHelper.getDaoSession().getStudentDao();
-        mStudentDao.insert(new Student(null, "23"));
+        mStudentDao.insert(new Student());
     }
 
     private void showData() {
