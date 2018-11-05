@@ -4,20 +4,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.liu">
 
-<<<<<<< HEAD
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!--<uses-permission android:name="android.permission.READ_LOGS" />-->
-=======
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
->>>>>>> 4497f44f8cc896592b7e633bfe073021fa346dd4
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <!--allowbackup为支持用户通过adb backup命令备份该app的数据信息，默认为true,建议设为false-->
     <application
         android:name="com.liu.MyApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -31,15 +30,11 @@
             </intent-filter>
         </activity>
 
-<<<<<<< HEAD
 
-        <service android:name=".log.MyLogService" android:exported="false">
-=======
         <service
             android:name=".log.MyLogService"
             android:exported="false"
             android:process="com.liu.test">
->>>>>>> 4497f44f8cc896592b7e633bfe073021fa346dd4
             <intent-filter>
                 <action android:name="com.liu.log.MyLogService" />
             </intent-filter>

@@ -4,7 +4,6 @@ buildscript {
     repositories {
         google()
         jcenter()
-<<<<<<< HEAD
         mavenLocal()
         mavenCentral()
         maven {
@@ -15,18 +14,11 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
         classpath 'org.royole:channel-plugin:1.0.1'
-=======
-//        maven {
-//           url uri('D:\\maven release\\1')
-//        }
-        mavenLocal()
-        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
 //        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
 //        classpath 'org.royole:channel-apk-plugin:1.0.1'
->>>>>>> 4497f44f8cc896592b7e633bfe073021fa346dd4
 //        classpath 'org.hzl.gradle-plugin:pluginDemo:1.0.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
