@@ -3,7 +3,6 @@ package com.liu.dao;
 import org.greenrobot.greendao.test.AbstractDaoTestLongPk;
 
 import com.liu.entity.Student;
-import com.liu.dao.StudentDao;
 
 public class StudentTest extends AbstractDaoTestLongPk<StudentDao, Student> {
 

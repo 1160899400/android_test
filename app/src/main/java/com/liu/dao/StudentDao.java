@@ -1,5 +1,6 @@
 package com.liu.dao;
 
+import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 
@@ -8,6 +9,8 @@ import org.greenrobot.greendao.Property;
 import org.greenrobot.greendao.internal.DaoConfig;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseStatement;
+import org.greenrobot.greendao.query.Query;
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import com.liu.entity.Student;
 
@@ -29,8 +32,7 @@ public class StudentDao extends AbstractDao<Student, Long> {
         public final static Property Info = new Property(2, String.class, "info", false, "INFO");
     }
 
-    private DaoSession daoSession;
-
+    private Query<Student> teacher_StudentsQuery;
 
     public StudentDao(DaoConfig config) {
         super(config);
@@ -38,7 +40,6 @@ public class StudentDao extends AbstractDao<Student, Long> {
     
     public StudentDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
-        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -89,12 +90,6 @@ public class StudentDao extends AbstractDao<Student, Long> {
     }
 
     @Override
-    protected final void attachEntity(Student entity) {
-        super.attachEntity(entity);
-        entity.__setDaoSession(daoSession);
-    }
-
-    @Override
     public Long readKey(Cursor cursor, int offset) {
         return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
@@ -141,4 +136,18 @@ public class StudentDao extends AbstractDao<Student, Long> {
         return true;
     }
     
+    /** Internal query to resolve the "students" to-many relationship of Teacher. */
+    public List<Student> _queryTeacher_Students(Long id) {
+        synchronized (this) {
+            if (teacher_StudentsQuery == null) {
+                QueryBuilder<Student> queryBuilder = queryBuilder();
+                queryBuilder.where(Properties.Id.eq(null));
+                teacher_StudentsQuery = queryBuilder.build();
+            }
+        }
+        Query<Student> query = teacher_StudentsQuery.forCurrentThread();
+        query.setParameter(0, id);
+        return query.list();
+    }
+
 }
