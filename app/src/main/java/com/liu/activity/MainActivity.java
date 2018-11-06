@@ -7,9 +7,12 @@ import android.util.Log;
 import android.widget.Button;
 
 import com.liu.R;
+import com.liu.dao.DaoMaster;
 import com.liu.dao.StudentDao;
 import com.liu.entity.Student;
 import com.liu.helper.GreenDaoHelper;
+
+import org.greenrobot.greendao.database.Database;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
 //        addData();
 //        showData();
+
+        //DevOpenHelper indirectly extends to DatabaseOpenHelper of SQLite.
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this,null);
+        //get writable database.WritableDatabase is both readable and writable while ReadableDatabase is only readable
+        Database database = helper.getWritableDb();
+        //DaoMaster is entrance of database operation in GreenDao
+        DaoMaster daoMaster = new DaoMaster(database);
 
 
 //        AsyncSession asyncSession = new AsyncSession();
@@ -50,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private void showData() {
         StudentDao mStudentDao = GreenDaoHelper.getDaoSession().getStudentDao();
         Student student = mStudentDao.load(1L);
-        Log.i("###", "student age: " + student.getAge());
+        Log.i(TAG, "student age: " + student.getAge());
 
     }
 
