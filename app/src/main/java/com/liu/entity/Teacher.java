@@ -24,7 +24,8 @@ public class Teacher {
     @Id
     private Long id;
 
-    @ToMany(referencedJoinProperty = "id")
+    @NotNull
+    @ToMany(referencedJoinProperty = "teacherId")
     private List<Student> students;
 
     /** Used to resolve relations */
@@ -123,5 +124,5 @@ public class Teacher {
         myDao = daoSession != null ? daoSession.getTeacherDao() : null;
     }
 
-
+   
 }
