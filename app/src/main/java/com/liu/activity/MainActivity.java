@@ -81,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
         AbstractDao<Student, Long> mStudentDao = GreenDaoHelper.getDaoSession().getStudentDao();
         mStudentDao.insert(new Student());
         RxDao<Student, Long> rxDao = new RxDao<Student, Long>(mStudentDao);
-        Observable<List<Student>> observable = rxDao.loadAll();
-        observable.subscribeOn(Schedulers.newThread())
+        rxDao.loadAll().subscribeOn(Schedulers.newThread())
                 .observeOn(ImmediateScheduler.INSTANCE)
                 .subscribe(new Observer<List<Student>>() {
                     @Override
